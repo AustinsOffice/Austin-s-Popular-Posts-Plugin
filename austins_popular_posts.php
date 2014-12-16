@@ -38,11 +38,21 @@ function popular_post_meta($content)
 }
 
 function get_popular_posts($time, $amount_to_list, $list_type = "ul", $class= "austins-popular-posts") {
-        // Define the arguments for the popular posts_query
+    // Convert the $time string to a wordpress date parameter safe thing!
+    if ($time != 'daily')
+        $time = trim($time, 'ly');
+    else
+        $time = 'day';
+    
+    // Define the arguments for the popular posts_query
     $args = array( 
         'orderby' => 'meta_value_num', 
         'meta_key' => 'post_views',
-        $time => date($time[0]),
+        'date_query' => array(
+            array(
+                'after' => '1 '.$time.' ago',
+            )
+        ),
         'posts_per_page' => $amount_to_list,
     );
     

@@ -22,7 +22,7 @@ To generate a list, you'll be using the following:
 <?php get_popular_posts($time, $amount_to_list, $list_type, $class); ?>
 ```
 
-The first two parameters are required. `$time` is the time-span from which to draw posts. This should be inline with available PHP date arguments: 'd', 'w', 'y', or you can use 'daily/day', 'weekly/week', 'monthly/month'.
+The first two parameters are required. `$time` is the time-span from which to draw posts. The time-span can be defined as `'1 ____ ago'`, so 'day', 'week', and 'month' are valid. Also, 'daily', 'weekly', and 'monthly' will be converted.
 
 `$amount_to_list` is just a simple integer that will determine the number of posts to list. `$list_type` is looking for a 'ul' or 'ol' depending on how you want the items listed, and you can pass a custom CSS class to `$class` to add to your list.
 

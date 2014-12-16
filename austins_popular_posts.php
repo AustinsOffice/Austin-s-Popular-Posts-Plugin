@@ -52,10 +52,9 @@ function get_popular_posts($time, $amount_to_list, $list_type = "ul", $class= "a
     echo '<'.$list_type.' class="'.$class.'">';
     // Loop through each post and print a link to the screen generating a list
     foreach ( $pop_posts as $post ) {
-        echo '<li><a href="'.get_permalink($post->ID).'" title="Permalink for'.get_the_title($post->ID).'">'.get_the_title($post->ID). ' | '. get_post_meta($post->ID, 'post_views', true) .'</a></li>';
+        echo '<li><a href="'.get_permalink($post->ID).'" title="Permalink for'.get_the_title($post->ID).'">'.get_the_title($post->ID).'</a></li>';
     }
     echo '</'.$list_type.'>';
-    echo 'Yeah!';
     // Reset the wordpress post data
     wp_reset_postdata();
 }
@@ -69,16 +68,18 @@ function load_css() {
 
 // This function prints the view count on screen
 function get_view_count($id = " ") {
+    global $post;
     if ($id == " ")
-        $id = global $post->ID;
+        $id = $post->ID;
     $count = get_post_meta($id, 'post_views', true);
     echo $count;
 }
 
 // This function just returns the view count so you can do stuff with it (?)
 function view_count($id = " ") {
+    global $post;
     if ($id == " ")
-        $id = global $post->ID;
+        $id = $post->ID;
     $count = get_post_meta($id, 'post_views', true);
     return $count;
 }

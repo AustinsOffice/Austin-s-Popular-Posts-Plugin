@@ -32,7 +32,7 @@ function popular_post_meta($content)
         add_post_meta($post->ID, 'post_views', 0, true);
 
         // This just grabs that data from the database, increments it by one, and stores it in a variable
-        $view_count = get_post_meta($post->ID, 'post_views', true);
+        $view_count = get_post_meta($post->ID, 'post_views', true)+1;
 
         // This updates that field with the newly incremented view_count. 
         update_post_meta($post->ID, 'post_views', $view_count);

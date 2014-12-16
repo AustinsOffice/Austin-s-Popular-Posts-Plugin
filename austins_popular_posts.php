@@ -14,6 +14,9 @@ include( plugin_dir_path( __FILE__ ) . 'popular_widget.php');
 // Create the filter so that this is added at the_content
 add_filter('the_content', 'popular_post_meta');
 
+// This is for debugging purposes. If true, load the default list CSS. Easy way to remove the CSS loading in the head so you can do your own thing.
+$load_css = true;
+
 
 function popular_post_meta($content) 
 {
@@ -69,8 +72,9 @@ function get_popular_posts($time, $amount_to_list, $list_type = "ul", $class= "a
     wp_reset_postdata();
 }
 
-
-add_action( 'wp_enqueue_scripts', 'load_css' );
+if ($load_css) {
+    add_action( 'wp_enqueue_scripts', 'load_css' );
+}
 function load_css() {
     wp_register_style( 'popular-posts', plugins_url( 'popular-posts.css', __FILE__ ) );
     wp_enqueue_style('popular-posts');

@@ -55,5 +55,3 @@ The options are self-explanatory, but just to be thorough I’ll touch on them. 
 
 ‘Amount to display’ is literally the number of items you want listed. That’s it.
 
-## On the Site
-[AustinsOffice.com/Popular-Posts](https://austinsoffice.com/popular-posts)
